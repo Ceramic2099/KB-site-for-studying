@@ -1,3 +1,1 @@
-import {similiarSuites} from './data.js';
-
-console.log(similiarSuites[0]);
+import {getFakeSuitesData} from './data.js';
