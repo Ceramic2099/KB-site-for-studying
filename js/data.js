@@ -10,8 +10,6 @@ const AVATARS = [
   'img/avatars/user06.png',
   'img/avatars/user07.png',
   'img/avatars/user08.png',
-  'img/avatars/user09.png',
-  'img/avatars/user10.png',
 ];
 const TYPES = ['palace', 'flat', 'house', 'bungalow'];
 const CHECK_TIMES = ['12:00', '13:00', '14:00'];
@@ -96,8 +94,12 @@ const createSuites = function () {
   return {author, offer, location};
 };
 
-const getFakeSuitesData = new Array(ADS_NUMBER).fill(null).map(function () {
-  return createSuites();
-})
+const getFakeSuitesData = function (howManyNumber = ADS_NUMBER) {
+  const data = new Array(howManyNumber).fill(null).map(function () {
+    return createSuites();
+  });
+
+  return data;
+}
 
 export {getFakeSuitesData};

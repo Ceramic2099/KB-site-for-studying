@@ -1,1 +1,2 @@
-import {getFakeSuitesData} from './data.js';
+import './data.js';
+import './ads.js';

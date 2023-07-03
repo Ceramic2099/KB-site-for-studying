@@ -17,4 +17,33 @@ function getRandomNumberWithFloat(min, max, decimal) {
   return NaN;
 }
 
-export {getRandomNumber, getRandomNumberWithFloat};
+function getTypeToRus(type) {
+  let houseType = '';
+  switch (type) {
+    case 'flat' :
+      houseType = 'Квартира';
+      break;
+    case 'bungalow' :
+      houseType = 'Бунгало';
+      break;
+    case 'house' :
+      houseType = 'Дом';
+      break;
+    case 'palace' :
+      houseType = 'Дворец';
+      break;
+  }
+  return houseType;
+}
+
+function getPhotosImg (photoArray, imageElement) {
+  const photoContainer = document.createDocumentFragment();
+  photoArray.forEach(function(src) {
+    const imgSample = imageElement.querySelector('.popup__photo').cloneNode(true);
+    imgSample.src = src;
+    photoContainer.appendChild(imgSample);
+  });
+  return photoContainer;
+}
+
+export {getRandomNumber, getRandomNumberWithFloat, getTypeToRus, getPhotosImg};
