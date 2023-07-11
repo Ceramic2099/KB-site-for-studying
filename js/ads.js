@@ -28,6 +28,5 @@ function getAdsElements (dataAttay) {
 
 }
 
-const adsElements = getAdsElements(fakeData);
-
-document.querySelector('#map-canvas').appendChild(adsElements.childNodes[0]);
+//const adsElements = getAdsElements(fakeData);
+//document.querySelector('#map-canvas').appendChild(adsElements.childNodes[0]);
