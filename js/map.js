@@ -1,4 +1,5 @@
 import {getFakeSuitesData} from './data.js';
+import {getAdsElement} from './ads.js'
 
 const adress = document.querySelector('#address');
 const fakeData = getFakeSuitesData();
@@ -9,7 +10,6 @@ function mapInactive () {
   const adsForm = document.querySelector('.ad-form');
   adsForm.classList.toggle('ad-form--disabled');
   adsForm.querySelectorAll('fieldset').forEach(function(element){
-    //element.classList.toggle('disabled');
     element.disabled = !element.disabled;
   });
 
@@ -43,15 +43,6 @@ L.tileLayer(
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
 ).addTo(map);
-
-
-
-/*const adsPinIcon = L.icon({
-  iconUrl: '/img/pin.svg',
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
-});*/
-
 
 L.marker(
   {
@@ -87,7 +78,7 @@ fakeData.forEach(function(value) {
     },
   );
 
-  adsMarker.addTo(map).bindPopup(value.offer.title);
+  adsMarker.addTo(map).bindPopup(getAdsElement(value));
 });
 
 
