@@ -14,25 +14,25 @@ rooms.addEventListener('change', function (){
   switch (rooms.value) {
     case '1' :
       capacitys.querySelector('[value = "0"]').disabled = true,
-      capacitys.querySelector('[value = "1"]').disabled = false;
+      capacitys.querySelector('[value = "1"]').disabled = false,
       capacitys.querySelector('[value = "2"]').disabled = true,
       capacitys.querySelector('[value = "3"]').disabled = true;
       break;
     case '2' :
       capacitys.querySelector('[value = "0"]').disabled = true,
-      capacitys.querySelector('[value = "1"]').disabled = false;
+      capacitys.querySelector('[value = "1"]').disabled = false,
       capacitys.querySelector('[value = "2"]').disabled = false,
       capacitys.querySelector('[value = "3"]').disabled = true;
       break;
     case '3' :
       capacitys.querySelector('[value = "0"]').disabled = true,
-      capacitys.querySelector('[value = "1"]').disabled = false;
+      capacitys.querySelector('[value = "1"]').disabled = false,
       capacitys.querySelector('[value = "2"]').disabled = false,
       capacitys.querySelector('[value = "3"]').disabled = false;
       break;
     case '100' :
       capacitys.querySelector('[value = "0"]').disabled = false,
-      capacitys.querySelector('[value = "1"]').disabled = true;
+      capacitys.querySelector('[value = "1"]').disabled = true,
       capacitys.querySelector('[value = "2"]').disabled = true,
       capacitys.querySelector('[value = "3"]').disabled = true;
       break;

@@ -1,8 +1,6 @@
-import {getFakeSuitesData} from './data.js';
 import {getAdsElement} from './ads.js'
 
 const adress = document.querySelector('#address');
-const fakeData = getFakeSuitesData();
 
 mapInactive();
 
@@ -33,9 +31,9 @@ const map = L.map('map')
     mapInactive();
   })
   .setView({
-    lat: 35.68950,
-    lng: 139.69171,
-  }, 12);
+    lat: 35.67724,
+    lng: 139.75056,
+  }, 13);
 
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -46,8 +44,8 @@ L.tileLayer(
 
 L.marker(
   {
-    lat: 35.68950,
-    lng: 139.69171,
+    lat: 35.67724,
+    lng: 139.75056,
   },
   {
     draggable: true,
@@ -61,25 +59,29 @@ L.marker(
   adress.value = getFormatedLatLng(evt.target.getLatLng());
 }).addTo(map);
 
-fakeData.forEach(function(value) {
-  const adsPinIcon = L.icon({
-    iconUrl: '/img/pin.svg',
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
+function renderAds(dataValues) {
+  dataValues.forEach(function (value) {
+    const adsPinIcon = L.icon({
+      iconUrl: '/img/pin.svg',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+    });
+
+    const adsMarker = L.marker(
+      {
+        lat: value.location.lat,
+        lng: value.location.lng,
+      },
+      {
+        icon: adsPinIcon,
+      },
+    );
+
+    adsMarker.addTo(map).bindPopup(getAdsElement(value));
   });
+}
 
-  const adsMarker = L.marker(
-    {
-      lat: value.location.x,
-      lng: value.location.y,
-    },
-    {
-      icon: adsPinIcon,
-    },
-  );
-
-  adsMarker.addTo(map).bindPopup(getAdsElement(value));
-});
+export {renderAds};
 
 
 
