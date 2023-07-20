@@ -1,13 +1,51 @@
+import {sendData} from './api.js';
+import {formSendSuccess, formSendError} from './popup.js';
+import {map, primaryMarker} from './map.js';
+
+
+
 const addAdsForm = document.querySelector('.ad-form');
 const typeSelector = addAdsForm.querySelector('#type');
 const priceSelector = addAdsForm.querySelector('#price');
 const chekin = addAdsForm.querySelector('#timein');
 const checkout = addAdsForm.querySelector('#timeout');
+const clearFormButton = addAdsForm.querySelector('.ad-form__reset');
 
 const rooms = addAdsForm.querySelector('#room_number');
 const capacitys = addAdsForm.querySelector('#capacity');
 
 capacitys.disabled = true;
+
+function resetForm(map, marker) {
+  map.setView({
+    lat: 35.67724,
+    lng: 139.75056,
+  }, 13);
+  marker.setLatLng({
+    lat: 35.67724,
+    lng: 139.75056,
+  });
+  addAdsForm.reset();
+}
+
+clearFormButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  resetForm(map, primaryMarker);
+}, false);
+
+
+const setAdsFormSubmit = function () {
+  addAdsForm.addEventListener('submit', function (evt){
+    evt.preventDefault();
+
+    sendData(
+      () => formSendSuccess(),
+      () => formSendError(),
+      new FormData(evt.target),
+      () => resetForm(map, primaryMarker),
+    )
+  })
+};
 
 rooms.addEventListener('change', function (){
   capacitys.disabled = false;
@@ -81,3 +119,5 @@ typeSelector.addEventListener('change', function () {
       break;
   }
 });
+
+export {setAdsFormSubmit, resetForm};

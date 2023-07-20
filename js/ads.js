@@ -20,6 +20,3 @@ function getAdsElement (data) {
 }
 
 export {getAdsElement};
-
-//const adsElements = getAdsElements(fakeData);
-//document.querySelector('#map-canvas').appendChild(adsElements.childNodes[0]);

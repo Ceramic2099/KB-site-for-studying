@@ -26,7 +26,7 @@ function getFormatedLatLng({lat, lng}) {
 }
 
 /* global L:readonly */
-const map = L.map('map')
+const map = L.map('map-canvas')
   .on('load', function () {
     mapInactive();
   })
@@ -42,7 +42,7 @@ L.tileLayer(
   },
 ).addTo(map);
 
-L.marker(
+const primaryMarker = L.marker(
   {
     lat: 35.67724,
     lng: 139.75056,
@@ -55,8 +55,8 @@ L.marker(
       iconAnchor: [26, 52],
     }),
   },
-).on('moveend', function (evt) {
-  adress.value = getFormatedLatLng(evt.target.getLatLng());
+).on('moveend', function () {
+  adress.value = getFormatedLatLng(primaryMarker.getLatLng());
 }).addTo(map);
 
 function renderAds(dataValues) {
@@ -81,7 +81,7 @@ function renderAds(dataValues) {
   });
 }
 
-export {renderAds};
+export {renderAds, map, primaryMarker};
 
 
 
