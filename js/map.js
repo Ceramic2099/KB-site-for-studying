@@ -1,6 +1,7 @@
-import {getAdsElement} from './ads.js'
+import {getAdsElement, getAdsFilter} from './ads.js'
 
 const adress = document.querySelector('#address');
+const ADS_COUNT = 10;
 
 mapInactive();
 
@@ -60,7 +61,8 @@ const primaryMarker = L.marker(
 }).addTo(map);
 
 function renderAds(dataValues) {
-  dataValues.forEach(function (value) {
+
+  dataValues.slice().filter(getAdsFilter).slice(0, ADS_COUNT).forEach(function (value) {
     const adsPinIcon = L.icon({
       iconUrl: '/img/pin.svg',
       iconSize: [40, 40],
@@ -77,9 +79,12 @@ function renderAds(dataValues) {
       },
     );
 
-    adsMarker.addTo(map).bindPopup(getAdsElement(value));
+    const adsElement = getAdsElement(value);
+    adsMarker.addTo(map).bindPopup(adsElement);
   });
 }
+
+
 
 export {renderAds, map, primaryMarker};
 

@@ -1,5 +1,10 @@
 import {getTypeToRus, getPhotosImg} from './util.js';
 
+const Default = {
+  HOUSE_TYPE: 'any',
+  HOUSE_PRICE: 'any',
+}
+
 function getAdsElement (data) {
   const adsTemplate = document.querySelector('#card').content.querySelector('.popup');
 
@@ -16,7 +21,86 @@ function getAdsElement (data) {
   newAds.querySelector('.popup__avatar').src = data.author.avatar ? data.author.avatar : newAds.querySelector('.popup__avatar').style.display = 'none';
 
   return newAds;
+}
+
+function getAdsFilter (ads) {
+  const adsHousingTypeFilter = document.querySelector('#housing-type option:checked');
+  const adsPriceTypeFilter = document.querySelector('#housing-price option:checked');
+
+  let rank = 0;
+
+  if (ads.offer.type === (adsHousingTypeFilter.value || Default.HOUSE_TYPE) || adsHousingTypeFilter.value === Default.HOUSE_TYPE) {
+    rank += 1;
+  }
+
+  switch (adsPriceTypeFilter.value) {
+    case 'any' :
+      rank += 1;
+      break;
+    case 'middle' :
+      if (ads.offer.price > 10000 && ads.offer.price < 50000) {
+        rank += 1;
+      }
+      break;
+    case 'low' :
+      if (ads.offer.price < 10000) {
+        rank += 1;
+      }
+      break;
+    case 'high' :
+      if (ads.offer.price > 50000) {
+        rank += 1;
+      }
+      break;
+  }
+
+  if (rank > 1) {
+    return true
+  } else {
+    return false
+  }
 
 }
 
-export {getAdsElement};
+/*function getAdsRank (ads) {
+  const adsHousingTypeFilter = document.querySelector('#housing-type option:checked');
+  const adsPriceTypeFilter = document.querySelector('#housing-price option:checked');
+
+  let rank = 0;
+
+  if (ads.offer.type === (adsHousingTypeFilter.value || Default.HOUSE_TYPE)) {
+    rank += 1;
+  }
+
+  switch (adsPriceTypeFilter.value) {
+    case 'any' :
+      rank += 1;
+      break;
+    case 'middle' :
+      if (ads.offer.price > 10000 && ads.offer.price < 50000) {
+        rank += 1;
+      }
+      break;
+    case 'low' :
+      if (ads.offer.price < 10000) {
+        rank += 1;
+      }
+      break;
+    case 'high' :
+      if (ads.offer.price > 50000) {
+        rank += 1;
+      }
+      break;
+  }
+
+  return rank;
+}
+
+function compareAds (adsA, adsB) {
+  const rankA = getAdsRank(adsA);
+  const rankB = getAdsRank(adsB);
+
+  return rankB - rankA;
+}*/
+
+export {getAdsElement, getAdsFilter};

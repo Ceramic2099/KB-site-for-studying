@@ -120,4 +120,29 @@ typeSelector.addEventListener('change', function () {
   }
 });
 
-export {setAdsFormSubmit, resetForm};
+const adsFilters = document.querySelector('.map__filters');
+
+function resetOldMapMarkers() {
+  while (map._panes.markerPane.children.length > 1) {
+    map._panes.markerPane.removeChild(map._panes.markerPane.lastChild)
+  }
+  map.closePopup();
+}
+
+function setFilterTypeChange (cb) {
+  const adsHousingTypeFilter = adsFilters.querySelector('#housing-type');
+  adsHousingTypeFilter.addEventListener('change', function () {
+    resetOldMapMarkers()
+    cb();
+  })
+}
+
+function setFilterPriceChange (cb) {
+  const adsHousingTypeFilter = adsFilters.querySelector('#housing-price');
+  adsHousingTypeFilter.addEventListener('change', function () {
+    resetOldMapMarkers()
+    cb();
+  })
+}
+
+export {setAdsFormSubmit, resetForm, setFilterTypeChange, setFilterPriceChange};
