@@ -138,11 +138,35 @@ function setFilterTypeChange (cb) {
 }
 
 function setFilterPriceChange (cb) {
-  const adsHousingTypeFilter = adsFilters.querySelector('#housing-price');
-  adsHousingTypeFilter.addEventListener('change', function () {
+  const adsHousingPriceFilter = adsFilters.querySelector('#housing-price');
+  adsHousingPriceFilter.addEventListener('change', function () {
     resetOldMapMarkers()
     cb();
   })
 }
 
-export {setAdsFormSubmit, resetForm, setFilterTypeChange, setFilterPriceChange};
+function setFilterRoomsChange (cb) {
+  const adsHousingRoomsFilter = adsFilters.querySelector('#housing-rooms');
+  adsHousingRoomsFilter.addEventListener('change', function () {
+    resetOldMapMarkers()
+    cb();
+  })
+}
+
+function setFilterGuestChange (cb) {
+  const adsHousingGuestFilter = adsFilters.querySelector('#housing-guests');
+  adsHousingGuestFilter.addEventListener('change', function () {
+    resetOldMapMarkers()
+    cb();
+  })
+}
+
+function setFilterFeaturesChange (cb) {
+  const adsHousingFeaturesFilter = adsFilters.querySelector('#housing-features');
+  adsHousingFeaturesFilter.addEventListener('change', function () {
+    resetOldMapMarkers()
+    cb();
+  })
+}
+
+export {setAdsFormSubmit, resetForm, setFilterTypeChange, setFilterPriceChange, setFilterRoomsChange, setFilterGuestChange, setFilterFeaturesChange};
