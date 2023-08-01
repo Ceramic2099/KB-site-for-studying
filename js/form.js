@@ -39,10 +39,10 @@ const setAdsFormSubmit = function () {
     evt.preventDefault();
 
     sendData(
-      () => formSendSuccess(),
-      () => formSendError(),
+      function () {return formSendSuccess()},
+      function () {return formSendError()},
       new FormData(evt.target),
-      () => resetForm(map, primaryMarker),
+      function () {return resetForm(map, primaryMarker)},
     )
   })
 };

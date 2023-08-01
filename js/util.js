@@ -62,7 +62,7 @@ function showAlert(message, color) {
 
   document.body.append(alertContainer);
 
-  setTimeout(() => {
+  setTimeout(function() {
     alertContainer.remove();
   }, 5000);
 }

@@ -16,7 +16,7 @@ const getData = function (onSuccess, OnFail) {
 };
 
 const sendData = function (onSuccess, OnFail, body, clearForm) {
-  fetch('https://23.javascript.pages.academy/keksobookin',
+  fetch('https://23.javascript.pages.academy/keksobooking',
     {
       method: 'POST',
       type: 'multipart/form-data',

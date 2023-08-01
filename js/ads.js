@@ -122,45 +122,4 @@ function getAdsFilter (ads) {
 
 }
 
-/*function getAdsRank (ads) {
-  const adsHousingTypeFilter = document.querySelector('#housing-type option:checked');
-  const adsPriceTypeFilter = document.querySelector('#housing-price option:checked');
-
-  let rank = 0;
-
-  if (ads.offer.type === (adsHousingTypeFilter.value || Default.HOUSE_TYPE)) {
-    rank += 1;
-  }
-
-  switch (adsPriceTypeFilter.value) {
-    case 'any' :
-      rank += 1;
-      break;
-    case 'middle' :
-      if (ads.offer.price > 10000 && ads.offer.price < 50000) {
-        rank += 1;
-      }
-      break;
-    case 'low' :
-      if (ads.offer.price < 10000) {
-        rank += 1;
-      }
-      break;
-    case 'high' :
-      if (ads.offer.price > 50000) {
-        rank += 1;
-      }
-      break;
-  }
-
-  return rank;
-}
-
-function compareAds (adsA, adsB) {
-  const rankA = getAdsRank(adsA);
-  const rankB = getAdsRank(adsB);
-
-  return rankB - rankA;
-}*/
-
 export {getAdsElement, getAdsFilter};
