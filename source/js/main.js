@@ -1,5 +1,5 @@
 /* global _:readonly */
-import './fake-data.js';
+
 import './ads.js';
 import {setAdsFormSubmit, setFilterTypeChange, setFilterPriceChange, setFilterRoomsChange, setFilterGuestChange, setFilterFeaturesChange} from './form.js';
 import {renderAds} from './map.js';

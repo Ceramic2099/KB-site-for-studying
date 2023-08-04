@@ -70,4 +70,6 @@ const getFakeSuitesData = function (howManyNumber = ADS_NUMBER) {
   return data;
 }
 
+
+
 export {getFakeSuitesData};

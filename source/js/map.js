@@ -1,4 +1,6 @@
 import {getAdsElement, getAdsFilter} from './ads.js'
+import L from 'leaflet';
+//import 'leaflet/dist/leaflet.css';
 
 const adress = document.querySelector('#address');
 const ADS_COUNT = 10;
@@ -26,7 +28,6 @@ function getFormatedLatLng({lat, lng}) {
   return `${(lat).toFixed(5)}, ${(lng).toFixed(5)}`;
 }
 
-/* global L:readonly */
 const map = L.map('map-canvas')
   .on('load', function () {
     mapInactive();
