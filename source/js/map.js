@@ -1,6 +1,6 @@
 import {getAdsElement, getAdsFilter} from './ads.js'
 import L from 'leaflet';
-//import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css';
 
 const adress = document.querySelector('#address');
 const ADS_COUNT = 10;
